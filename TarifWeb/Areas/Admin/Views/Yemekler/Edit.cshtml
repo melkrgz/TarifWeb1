@@ -1,0 +1,39 @@
+﻿@model TarifWeb.Models.Yemek
+
+@{ ViewData["Title"] = "Edit";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Tarifi Güncelle</h1>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="YemekId" />
+            <div class="form-group">
+                Yemek Adı
+                <input asp-for="YemekAd" class="form-control" />
+                <span asp-validation-for="YemekAd" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Tarif Açıklaması
+                <input asp-for="YemekAciklamasi" class="form-control" />
+                <span asp-validation-for="YemekAciklamasi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Yemek Resmi
+                <input asp-for="YemekFotografi" class="form-control" />
+                <span asp-validation-for="YemekFotografi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                Kategori Adı
+                <select asp-for="KategoriId" class="form-control" asp-items="ViewBag.KategoriId"></select>
+                <span asp-validation-for="KategoriId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Güncelle" class="btn btn-primary" /> |
+                <a asp-action="Index" class="btn btn-warning">Geri Dön</a>
+            </div>
+        </form>
+    </div>
+</div>

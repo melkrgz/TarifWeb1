@@ -1,0 +1,22 @@
+﻿@model IEnumerable<TarifWeb.Models.Yorum>
+@foreach (var item in Model)
+{
+    <div class="col-12">
+        <b>@item.Yemek.YemekAd | @item.YorumBasligi  <div class="float-right text-warning">@(item.YemekDerecesi/10)/5</div></b>
+    </div>
+    <div class="col-12">
+        @item.YorumAciklama
+    </div>
+    <hr />
+    <br />
+
+}
+<script>
+    $(function () {
+
+        $("#rateYoo").rateYo({
+            rating: 3.2,
+            rtl: false
+        });
+    });
+</script>

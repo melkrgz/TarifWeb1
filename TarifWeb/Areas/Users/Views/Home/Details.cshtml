@@ -1,0 +1,50 @@
+﻿@model TarifWeb.Models.Yemek
+
+@{ ViewData["Title"] = "Details";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<br />
+<h2 style="text-align:center;" class="text-primary">@Html.DisplayFor(model => model.YemekAd)</h2>
+<br />
+
+<div class="row">
+    <div style="text-align:center">
+        <img src="@Model.YemekFotografi" style="width:200px;height:300px;text-align:center">
+    </div>
+</div>
+<br />
+<div class="row">
+    @Html.DisplayFor(model => model.YemekAciklamasi)
+</div>
+<br />
+<div class="row">
+    <div class="col-6">
+        <h5 class="text-success"><b>Kategori : </b>@Html.DisplayFor(model => model.Kategori.KategoriAd)</h5>
+    </div>
+    <div class="col-6">
+        <div style="float:right" id="rateYo"></div>
+    </div>
+
+</div>
+<br />
+
+<br />
+<br />
+<br />
+<br />
+
+<h4 class="text-success" style="text-align:center;">YORUMLAR</h4>
+@await Component.InvokeAsync("YorumListeleme")
+
+<h4 class="text-success"><a asp-controller="Yorumlar" asp-action="Create" class="btn btn-warning">Yorum Ekle</a></h4>
+
+
+<br />
+<br />
+<script>$(function () {
+
+        $("#rateYo").rateYo({
+            rating: "65%",
+            readOnly: true
+        });
+    });</script>

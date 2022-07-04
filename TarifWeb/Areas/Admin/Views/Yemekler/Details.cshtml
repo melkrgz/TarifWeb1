@@ -1,0 +1,41 @@
+﻿@model TarifWeb.Models.Yemek
+
+@{ ViewData["Title"] = "Details";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tarif</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YemekAd)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YemekAd)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YemekAciklamasi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YemekAciklamasi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YemekFotografi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YemekFotografi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Kategori)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Kategori.KategoriAd)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.YemekId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

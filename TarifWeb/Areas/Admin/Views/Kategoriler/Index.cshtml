@@ -1,0 +1,63 @@
+﻿@model IEnumerable<TarifWeb.Models.Kategori>
+
+@{ ViewData["Title"] = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<br />
+<h2 style="text-align:center;" class="text-primary">Kategori Listesi</h2>
+<br />
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        <table id="myTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Kategori İsmi
+                    </th>
+                    <th>
+                        Kullanıcı Sil
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.KategoriAd)
+        </td>
+        <td>
+            <div class="row">
+                <div class="col-6">
+                    <a class="btn btn-danger btn-block" asp-action="Delete" asp-route-id="@item.KategoriId">Sil</a>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-info btn-block" asp-action="Edit" asp-route-id="@item.KategoriId">Güncelle</a>
+                </div>
+            </div>
+        </td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-1">
+    </div>
+
+</div>
+<br />
+<br />
+<p>
+    <a class="btn btn-primary btn-block" asp-area="Admin" asp-controller="Kategoriler" asp-action="Create">Kategori Ekle</a>
+</p>
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+            }
+        });
+    });</script>
+}
+

@@ -1,0 +1,32 @@
+﻿@model IEnumerable<TarifWeb.Models.Yemek>
+@{ ViewData["Title"] = "CategoryDetails";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<br />
+<h2 style="text-align:center;" class="text-primary">Yemek Listesi</h2>
+<br />
+
+<div class="row">
+    <div class="col-3">
+        @await Component.InvokeAsync("CategoryList")
+    </div>
+    @foreach (var item in Model)
+    {
+<div class="col-3">
+    <div class="card" style="width: 18rem;">
+        <img src="@item.YemekFotografi" style="height:200px" class="card-img-top">
+        <div class="card-body">
+            <h5 class="card-title">@item.YemekAd</h5>
+            @if (string.IsNullOrEmpty(item.YemekAciklamasi) == false && item.YemekAciklamasi.Length > 50)
+            {
+        <p class="card-text">@item.YemekAciklamasi.Substring(0, 50)...</p> }
+                        else
+                        {
+                            <p class="card-text">@item.YemekAciklamasi...</p>
+                        }
+            <a asp-action="Details" asp-route-id="@item.YemekId" class="btn btn-primary">Devamını Oku..</a>
+            <input type="hidden" id="@item.YemekId" />
+        </div>
+    </div>
+</div>}
+</div>

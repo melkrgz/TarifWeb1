@@ -1,0 +1,69 @@
+﻿@model IEnumerable<TarifWeb.Models.Yorum>
+
+@{ ViewData["Title"] = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<br />
+<h2 style="text-align:center;" class="text-primary">Yorum Listesi</h2>
+<br />
+<table id="myTable" class="table table-striped table-bordered">
+    <thead>
+        <tr>
+            <th>
+                Yorum Başlığı
+            </th>
+            <th>
+                Yorum Açıklaması
+            </th>
+            <th>
+                Yorumun Ait Olduğu Yemek
+            </th>
+            <th>
+                Oy
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.YorumBasligi)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.YorumAciklama)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Yemek.YemekAd)
+    </td>
+    <td>
+        <b><div class="float-right text-warning">@(item.YemekDerecesi/10)/5</div></b>
+    </td>
+    <td>
+        <div class="row">
+            <div class="col-6">
+                <a class="btn btn-danger btn-block" asp-action="Delete" asp-route-id="@item.YorumId">Sil</a>
+            </div>
+            <div class="col-6">
+                <a class="btn btn-info btn-block" asp-action="Edit" asp-route-id="@item.YorumId">Güncelle</a>
+            </div>
+        </div>
+    </td>
+</tr>}
+    </tbody>
+</table>
+<br />
+<p>
+    <a class="btn btn-primary btn-block" asp-area="Users" asp-controller="Yorumlar" asp-action="Create">Yorum Ekle</a>
+</p>
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+            $('#myTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                }
+            });
+        });</script>
+}
+

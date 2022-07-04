@@ -1,0 +1,85 @@
+﻿@model IEnumerable<TarifWeb.Models.Yemek>
+
+@{ ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<br />
+<h2 style="text-align:center;" class="text-primary">Yemek Listesi</h2>
+<br />
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        <table id="myTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Yemek Resmi
+                    </th>
+                    <th>
+                        Yemek Adı
+                    </th>
+                    <th>
+                        Tarif
+                    </th>
+                    <th>
+                        Kategori
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            <img src="@item.YemekFotografi" style="height:40px;width:40px" class="card-img-top">
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.YemekAd)
+        </td>
+        <td>
+            @if (string.IsNullOrEmpty(item.YemekAciklamasi) == false && item.YemekAciklamasi.Length > 50)
+            {
+            <p>@item.YemekAciklamasi.Substring(0, 40)...</p>
+                    }
+                else
+                {
+        <p>@item.YemekAciklamasi    </p>
+                }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kategori.KategoriAd)
+        </td>
+        <td>
+            <div class="row">
+                <div class="col-6">
+                    <a class="btn btn-danger btn-block" asp-action="Delete" asp-route-id="@item.YemekId">Sil</a>
+                </div>
+                <div class="col-6">
+                    <a class="btn btn-info btn-block" asp-action="Edit" asp-route-id="@item.YemekId">Güncelle</a>
+                </div>
+            </div>
+        </td>
+    </tr>
+}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-1">
+    </div>
+</div>
+<br />
+<p>
+    <a class="btn btn-primary btn-block" asp-area="Admin" asp-controller="Yemekler" asp-action="Create">Tarif    Ekle</a>
+</p>
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+            $('#myTable').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+                }
+            });
+        });</script>
+}
+

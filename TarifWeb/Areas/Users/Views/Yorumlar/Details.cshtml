@@ -1,0 +1,41 @@
+﻿@model TarifWeb.Models.Yorum
+
+@{ ViewData["Title"] = "Details";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Details</h1>
+
+<div>
+    <h4>Yorum</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YorumBasligi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YorumBasligi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YorumAciklama)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YorumAciklama)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.YemekDerecesi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.YemekDerecesi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Yemek)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Yemek.YemekAciklamasi)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.YorumId">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>

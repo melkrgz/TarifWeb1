@@ -1,0 +1,66 @@
+﻿@model IEnumerable<TarifWeb.Models.Kullanici>
+@{ ViewData["Title"] = "Index";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+<br />
+<h2 style="text-align:center;" class="text-primary">Kullanıcı Listesi</h2>
+<br />
+<div class="row">
+    <div class="col-md-1">
+    </div>
+    <div class="col-md-10">
+        <table id="myTable" class="table table-striped table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        Ad
+                    </th>
+                    <th>
+                        Soyad
+                    </th>
+                    <th>
+                        Email
+                    </th>
+                    <th>
+                        Kullanıcı Sil
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Soyad)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            <a class="btn btn-danger btn-block" asp-action="Delete" asp-route-id="@item.Id.ToString()">Sil</a>
+        </td>
+    </tr>}
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-1">
+    </div>
+
+</div>
+<br />
+<br />
+<p>
+    <a class="btn btn-primary btn-block" asp-area="Identity" asp-page="/Account/Register">Kullanıcı Ekle</a>
+</p>
+@section Scripts{
+    <script type="text/javascript">$(document).ready(function () {
+        $('#myTable').DataTable({
+            "language": {
+                "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Turkish.json"
+            }
+        });
+    });</script>
+}
+

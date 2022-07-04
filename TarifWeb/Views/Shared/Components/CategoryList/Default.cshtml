@@ -1,0 +1,12 @@
+﻿@model IEnumerable<TarifWeb.Models.Kategori>
+<div class="list-group">
+    <a asp-action="Index" asp-controller="Home" class="list-group-item list-group-item-action active @(ViewBag.KategoriId==null?"active":"")" aria-current="true">
+        Tüm Tarifler
+    </a>
+    @foreach (var item in Model)
+    {
+
+        <a asp-action="CategoryDetails" asp-controller="Home"  asp-route-id="@item.KategoriId" class="list-group-item list-group-item-action @(ViewBag.KategoriId?.ToString()==item.KategoriId.ToString()?"active":"")">@item.KategoriAd</a>
+    }
+
+</div>  

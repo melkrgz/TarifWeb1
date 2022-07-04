@@ -1,0 +1,25 @@
+﻿@model TarifWeb.Models.Kategori
+
+@{ ViewData["Title"] = "Delete";
+                Layout = "~/Views/Shared/_Layout.cshtml"; }
+
+<h1>Kategori Sil</h1>
+
+<h3>Kategoriyi Silmek İstediğinizden Emin misiniz?</h3>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            Kategori Adı
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.KategoriAd)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="KategoriId" />
+        <input type="submit" value="Sil" class="btn btn-danger" /> |
+        <a asp-action="Index" class="btn btn-warning">Geri Dön</a>
+    </form>
+</div>
